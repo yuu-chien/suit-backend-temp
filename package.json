@@ -1,0 +1,22 @@
+{
+  "name": "hex-jslc-w3",
+  "version": "1.0.0",
+  "description": "六角 JS 作品實戰班｜第三週．產品管理頁面",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yuu-chien/hex-JSLC-w3.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yuu-chien/hex-JSLC-w3/issues"
+  },
+  "homepage": "https://github.com/yuu-chien/hex-JSLC-w3#readme",
+  "dependencies": {
+    "bootstrap": "^4.5.0"
+  }
+}
