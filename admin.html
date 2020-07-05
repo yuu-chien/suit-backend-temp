@@ -8,50 +8,142 @@
     <link rel="stylesheet" href="./CSS/admin.all.min.css">
 </head>
 <body>
-    <nav class="navbar navbar-light bg-light">
+
+  <nav class="navbar navbar-light bg-light">
         <a class="navbar-brand" href="#">Navbar</a>
-    </nav>
-    <section>
-        <div class="container">
-            <table class="table table-hover">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">產品名稱</th>
-                    <th scope="col">產品分類</th>
-                    <th scope="col">原價</th>
-                    <th scope="col">售價</th>
-                    <th scope="col">狀態</th>
-                    <th scope="col">編輯</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>修身棉質混紡襯衫</td>
-                    <td>襯衫</td>
-                    <td>1800</td>
-                    <td>1650</td>
-                    <td>上架中</td>
-                    <td>
-                        <span class="material-icons">edit</span>
-                        <span class="material-icons">delete</span>
-                    </td>
-                    <!-- <td>https://lp.cosstores.com/app001prod?set=source[/45/f1/45f1a7fe64e54db0b18719844163323a54b9020b.jpg],origin[dam],type[LOOKBOOK],device[hdpi],quality[80],ImageVersion[2]&call=url[file:/product/zoom]</td> -->
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>修身亞麻西裝外套</td>
-                    <td>西裝外套</td>
-                    <td>7500</td>
-                    <td>7000</td>
-                    <td>上架中</td>
-                    <td></td>
-                  </tr>
-                </tbody>
-              </table>
+  </nav>
+
+  <section>
+    <div class="container">
+      <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#exampleModal">新增商品</button>
+    </div>
+  </section>
+
+  <section>
+      <div class="container">
+          <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">產品名稱</th>
+                  <th scope="col">產品分類</th>
+                  <th scope="col">原價</th>
+                  <th scope="col">售價</th>
+                  <th scope="col">狀態</th>
+                  <th scope="col">編輯</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>修身棉質混紡襯衫</td>
+                  <td>襯衫</td>
+                  <td>1800</td>
+                  <td>1650</td>
+                  <td>上架中</td>
+                  <td>
+                      <span class="material-icons">edit</span>
+                      <span class="material-icons">delete</span>
+                  </td>
+                  <!-- <td>https://lp.cosstores.com/app001prod?set=source[/45/f1/45f1a7fe64e54db0b18719844163323a54b9020b.jpg],origin[dam],type[LOOKBOOK],device[hdpi],quality[80],ImageVersion[2]&call=url[file:/product/zoom]</td> -->
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>修身亞麻西裝外套</td>
+                  <td>西裝外套</td>
+                  <td>7500</td>
+                  <td>7000</td>
+                  <td>上架中</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+      </div>
+  </section>
+
+  <!-- ------ 新增商品 Modal ------ -->
+  <div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="display: block;">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">新增產品</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
-    </section>
+        <!-- 新增需填寫的產品內容 -->
+        <div class="row modal-body">
+          <!-- - 新增商品名稱 - -->
+          <div class="col-12 form-group">
+            <label for="title">商品名稱</label>
+            <input type="text" class="form-control" id="title" aria-describedby="titleHelp">
+          </div>
+          <div class="col-6">
+            <!-- - 新增商品圖片 - -->
+            <div class="form-group">
+              <label for="imageUrl">商品圖片網址</label>
+              <input type="text" class="form-control" id="imageUrl" aria-describedby="imageUrlHelp">
+            </div>
+            <!-- - 新增商品分類 - -->
+            <div class="form-group">
+              <label for="category">商品分類</label>
+              <select class="form-control">
+                <option>西裝襯衫</option>
+                <option>西裝外套</option>
+                <option>西裝長褲</option>
+                <option>領帶</option>
+                <option>口袋巾</option>
+              </select>
+            </div>
+            <!-- - 新增商品單位 - -->
+            <div class="form-group">
+              <label for="unit">單位</label>
+              <input type="text" class="form-control" id="unit" aria-describedby="unitHelp">
+            </div>
+          </div>
+          <!-- - 商品圖片預覽 - -->
+          <div class="col-6 form-group">
+            <p>商品預覽<p>
+            <div>
+              <img src="" alt="">
+            </div>
+          </div>
+          <!-- - 新增商品原價 - -->
+          <div class="col-6 form-group">
+            <label for="origin_price">原價</label>
+            <input type="number" class="form-control" id="origin_price">
+          </div>
+          <!-- - 新增商品售價 - -->
+          <div class="col-6 form-group">
+            <label for="price">售價</label>
+            <input type="number" class="form-control" id="price">
+          </div>
+          <!-- - 新增商品短述 - -->
+          <div class="col-12 form-group">
+            <label for="content">商品短述</label>
+            <input type="text" class="form-control" id="content" aria-describedby="contentHelp">
+          </div>
+          <!-- - 新增商品詳述 - -->
+          <div class="col-12 form-group">
+            <label for="description">商品詳述</label>
+            <textarea class="form-control" id="description" rows="3"></textarea>
+          </div>
+          <!-- - 新增商品狀態 - -->
+          <div class="col-12 form-check">
+            <input class="form-check-input" type="checkbox" value="" id="enabled">
+            <label class="form-check-label" for="enabled">Default checkbox</label>
+          </div>
+        </div>
+        <!-- 儲存或關閉 -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+          <button type="button" class="btn btn-primary">新增</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 </body>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
