@@ -8,61 +8,101 @@
     <link rel="stylesheet" href="./CSS/admin.all.min.css">
 </head>
 <body>
+  <div id="app" class="container-fluid">
+    <div class="row">
 
-  <nav class="navbar navbar-light bg-light">
-        <a class="navbar-brand" href="#">Navbar</a>
-  </nav>
+      <nav class="col-2">
+        <div class="d-flex flex-column justify-content-between h-100">
+          <div>
+            <!-- logo -->
+            <div class="logo-wrap">
+              <a href=""><h1>TOO HOT</h1></a>            
+            </div>
+            <!-- 功能選單 -->
+            <ul class="function-list">
+              <li class="function-item">
+                <a class="d-flex" href="#">
+                  <span class="material-icons mr-3">view_list</span>
+                  <p class="font-weight-bold">產品列表</p>              
+                </a>
+              </li>
+              <li class="function-item">
+                <a class="d-flex" href="#">
+                  <span class="material-icons mr-3">forum</span>
+                  <p class="font-weight-bold">顧客問答</p>
+                </a>
+              </li>
+              <li class="function-item">
+                <a class="d-flex" href="#">
+                  <span class="material-icons mr-3">assignment</span>
+                  <p class="font-weight-bold">訂單系統</p>
+                </a>
+              </li>
+              <li class="function-item">
+                <a class="d-flex" href="#">
+                  <span class="material-icons mr-3">supervisor_account</span>
+                  <p class="font-weight-bold">會員系統</p>
+                </a>
+              </li>
+              <li class="function-item">
+                <a class="d-flex" href="#">
+                  <span class="material-icons mr-3">settings</span>
+                  <p class="font-weight-bold">後台設定</p>
+                </a>
+              </li>
+            </ul>
+          </div>
 
-  <section>
-    <div class="container">
-      <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#exampleModal">新增商品</button>
-    </div>
-  </section>
+        </div>
+      </nav>
 
-  <section>
-      <div class="container">
-          <table class="table table-hover">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">產品名稱</th>
-                  <th scope="col">產品分類</th>
-                  <th scope="col">原價</th>
-                  <th scope="col">售價</th>
-                  <th scope="col">狀態</th>
-                  <th scope="col">編輯</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>修身棉質混紡襯衫</td>
-                  <td>襯衫</td>
-                  <td>1800</td>
-                  <td>1650</td>
-                  <td>上架中</td>
-                  <td>
-                      <span class="material-icons">edit</span>
-                      <span class="material-icons">delete</span>
-                  </td>
-                  <!-- <td>https://lp.cosstores.com/app001prod?set=source[/45/f1/45f1a7fe64e54db0b18719844163323a54b9020b.jpg],origin[dam],type[LOOKBOOK],device[hdpi],quality[80],ImageVersion[2]&call=url[file:/product/zoom]</td> -->
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>修身亞麻西裝外套</td>
-                  <td>西裝外套</td>
-                  <td>7500</td>
-                  <td>7000</td>
-                  <td>上架中</td>
-                  <td></td>
-                </tr>
-              </tbody>
-            </table>
+      <div class="col-10">
+        <section class="mb-4">
+          <div class="container d-flex justify-content-end">
+            <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#exampleModal">新增商品</button>
+          </div>
+        </section>
+        <section>
+          <div class="container">
+              <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">產品名稱</th>
+                      <th scope="col">產品分類</th>
+                      <th scope="col">原價</th>
+                      <th scope="col">售價</th>
+                      <th scope="col">狀態</th>
+                      <th scope="col">編輯</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr v-for="(product, id) in productsData">
+                      <th scope="row">{{ product.id }}</th>
+                      <td>{{ product.title }}</td>
+                      <td>{{ product.category }}</td>
+                      <td>{{ product.origin_price }}</td>
+                      <td>{{ product.price }}</td>
+                      <!-- 使用三原運算子判斷 boolean -->
+                      <td>{{ product.enabled ? "上架中": "下架中" }}</td>
+                      <td>
+                          <span class="material-icons">edit</span>
+                          <span class="material-icons">delete</span>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+          </div>
+        </section>
       </div>
-  </section>
+    </div>
+
+  </div>
+
+
 
   <!-- ------ 新增商品 Modal ------ -->
-  <div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="display: block;">
+  <div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -150,4 +190,7 @@
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<!-- development version, includes helpful console warnings -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="./JS/all.js"></script>
 </html>
