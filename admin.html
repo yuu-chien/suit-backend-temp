@@ -79,7 +79,7 @@
                   </tr>
                 </thead>
                 <tbody class="text-center">
-                  <tr v-for="(product, id) in productsData" :key="product.id">
+                  <tr v-for="product in productsData" :key="product.id">
                     <th scope="row">{{ product.id }}</th>
                     <td>{{ product.title }}</td>
                     <td>{{ product.category }}</td>
@@ -120,72 +120,72 @@
           <!-- - 新增商品名稱 - -->
           <div class="col-12 form-group">
             <label for="title">商品名稱</label>
-            <input type="text" class="form-control" id="title" aria-describedby="titleHelp">
+            <input type="text" class="form-control" id="title" aria-describedby="titleHelp" v-model="temporarilyData.title">
           </div>
           <!-- - 新增中間內容左邊 - -->
           <div class="col-6">
             <!-- - 新增商品圖片 - -->
             <div class="form-group">
               <label for="imageUrl">商品圖片網址</label>
-              <input type="text" class="form-control" id="imageUrl" aria-describedby="imageUrlHelp">
+              <input type="text" class="form-control" id="imageUrl" aria-describedby="imageUrlHelp" v-model="temporarilyData.imageUrl">
             </div>
             <!-- - 新增商品分類 - -->
             <div class="form-group">
               <label for="category">商品分類</label>
-              <select class="form-control">
-                <option>西裝襯衫</option>
-                <option>西裝外套</option>
-                <option>西裝長褲</option>
-                <option>領帶</option>
-                <option>口袋巾</option>
+              <select class="form-control" v-model="temporarilyData.category">
+                <option value="西裝襯衫">西裝襯衫</option>
+                <option value="西裝外套">西裝外套</option>
+                <option value="西裝長褲">西裝長褲</option>
+                <option value="領帶">領帶</option>
+                <option value="口袋巾">口袋巾</option>
               </select>
             </div>
             <!-- - 新增商品狀態 - -->
             <div class="form-group">
               <label for="">商品狀態</label>
               <select class="form-control">
-                <option>上架中</option>
-                <option>下架中</option>
+                <option value=true>上架中</option>
+                <option value=false>下架中</option>
               </select>
             </div>
             <!-- - 新增商品單位 - -->
             <div class="form-group">
               <label for="unit">單位</label>
-              <input type="text" class="form-control" id="unit" aria-describedby="unitHelp">
+              <input type="text" class="form-control" id="unit" aria-describedby="unitHelp" v-model="temporarilyData.unit">
             </div>
           </div>
           <!-- - 商品圖片預覽 - -->
           <div class="col-6 form-group">
             <p>商品預覽<p>
             <div>
-              <img src="" alt="">
+              <img :src="temporarilyData.imageUrl" alt="">
             </div>
           </div>
           <!-- - 新增商品原價 - -->
           <div class="col-6 form-group">
             <label for="origin_price">原價</label>
-            <input type="number" class="form-control" id="origin_price">
+            <input type="number" class="form-control" id="origin_price" v-model="temporarilyData.origin_price">
           </div>
           <!-- - 新增商品售價 - -->
           <div class="col-6 form-group">
             <label for="price">售價</label>
-            <input type="number" class="form-control" id="price">
+            <input type="number" class="form-control" id="price" v-model="temporarilyData.price">
           </div>
           <!-- - 新增商品短述 - -->
           <div class="col-12 form-group">
             <label for="content">商品短述</label>
-            <input type="text" class="form-control" id="content" aria-describedby="contentHelp">
+            <input type="text" class="form-control" id="content" aria-describedby="contentHelp" v-model="temporarilyData.content">
           </div>
           <!-- - 新增商品詳述 - -->
           <div class="col-12 form-group">
             <label for="description">商品詳述</label>
-            <textarea class="form-control" id="description" rows="3"></textarea>
+            <textarea class="form-control" id="description" rows="3" v-model="temporarilyData.description"></textarea>
           </div>
         </div>
         <!-- 儲存或關閉 -->
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
-          <button type="button" class="btn btn-primary">新增</button>
+          <button type="button" class="btn btn-primary" @click="addNewProduct">新增</button>
         </div>
       </div>
     </div>

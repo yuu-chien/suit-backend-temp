@@ -1,6 +1,7 @@
 var app = new Vue({
     el: '#app',
     data: {
+        temporarilyData: {},
         productsData: [
             {
                 id: 1,
@@ -28,4 +29,12 @@ var app = new Vue({
             }
         ]
     },
+    methods: {
+        addNewProduct() {
+            console.log("ADD!");
+            // this.productsData.push(this.temporarilyData);
+            // console.log(this.productsData)
+        },
+    }
 });
+
