@@ -9,9 +9,10 @@
 </head>
 <body>
   <div id="app" class="container-fluid">
+    <!-- row 開始 -->
     <div class="row">
-
-      <nav class="col-2">
+      <!-- 頁面左方選單欄 開始 -->
+      <nav class="col-2" style="background: #414144;">
         <div class="d-flex flex-column justify-content-between h-100">
           <div>
             <!-- logo -->
@@ -55,60 +56,63 @@
 
         </div>
       </nav>
-
+      <!-- 頁面左方選單欄 結束 -->
       <div class="col-10">
         <section class="mb-4">
           <div class="container d-flex justify-content-end">
-            <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#exampleModal">新增商品</button>
+            <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#addProductModal">新增商品</button>
           </div>
         </section>
+
         <section>
           <div class="container">
-              <table class="table table-hover">
-                  <thead>
-                    <tr>
-                      <th scope="col">#</th>
-                      <th scope="col">產品名稱</th>
-                      <th scope="col">產品分類</th>
-                      <th scope="col">原價</th>
-                      <th scope="col">售價</th>
-                      <th scope="col">狀態</th>
-                      <th scope="col">編輯</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr v-for="(product, id) in productsData">
-                      <th scope="row">{{ product.id }}</th>
-                      <td>{{ product.title }}</td>
-                      <td>{{ product.category }}</td>
-                      <td>{{ product.origin_price }}</td>
-                      <td>{{ product.price }}</td>
-                      <!-- 使用三原運算子判斷 boolean -->
-                      <td>{{ product.enabled ? "上架中": "下架中" }}</td>
-                      <td>
-                          <span class="material-icons">edit</span>
-                          <span class="material-icons">delete</span>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+              <table class="table table-hover bg-light">
+                <thead class="text-center">
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">產品名稱</th>
+                    <th scope="col">產品分類</th>
+                    <th scope="col">原價</th>
+                    <th scope="col">售價</th>
+                    <th scope="col">狀態</th>
+                    <th scope="col">編輯</th>
+                  </tr>
+                </thead>
+                <tbody class="text-center">
+                  <tr v-for="(product, id) in productsData" :key="product.id">
+                    <th scope="row">{{ product.id }}</th>
+                    <td>{{ product.title }}</td>
+                    <td>{{ product.category }}</td>
+                    <td>{{ product.origin_price }}</td>
+                    <td>{{ product.price }}</td>
+                    <!-- 使用三原運算子判斷 boolean -->
+                    <td>{{ product.enabled ? "上架中": "下架中" }}</td>
+                    <td>
+                        <span class="material-icons mr-2 _c_icon-edit">edit</span>
+                        <span class="material-icons _c_icon-del">delete</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
           </div>
         </section>
+
       </div>
-    </div>
+    </div> 
+    <!-- row 結束 -->
 
   </div>
 
 
 
   <!-- ------ 新增商品 Modal ------ -->
-  <div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+  <div class="modal " id="addProductModal" tabindex="-1" role="dialog" aria-labelledby="addProductModalLabel" aria-hidden="true">
+    <div class="modal-dialog  _c_add-modal">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">新增產品</h5>
+          <h5 class="modal-title" id="addProductModalLabel">新增產品</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
+            <span class="material-icons">close</span>
           </button>
         </div>
         <!-- 新增需填寫的產品內容 -->
@@ -118,6 +122,7 @@
             <label for="title">商品名稱</label>
             <input type="text" class="form-control" id="title" aria-describedby="titleHelp">
           </div>
+          <!-- - 新增中間內容左邊 - -->
           <div class="col-6">
             <!-- - 新增商品圖片 - -->
             <div class="form-group">
@@ -133,6 +138,14 @@
                 <option>西裝長褲</option>
                 <option>領帶</option>
                 <option>口袋巾</option>
+              </select>
+            </div>
+            <!-- - 新增商品狀態 - -->
+            <div class="form-group">
+              <label for="">商品狀態</label>
+              <select class="form-control">
+                <option>上架中</option>
+                <option>下架中</option>
               </select>
             </div>
             <!-- - 新增商品單位 - -->
@@ -167,11 +180,6 @@
           <div class="col-12 form-group">
             <label for="description">商品詳述</label>
             <textarea class="form-control" id="description" rows="3"></textarea>
-          </div>
-          <!-- - 新增商品狀態 - -->
-          <div class="col-12 form-check">
-            <input class="form-check-input" type="checkbox" value="" id="enabled">
-            <label class="form-check-label" for="enabled">Default checkbox</label>
           </div>
         </div>
         <!-- 儲存或關閉 -->
