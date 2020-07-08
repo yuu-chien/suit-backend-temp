@@ -30,11 +30,33 @@ var app = new Vue({
         ]
     },
     methods: {
+        // 新增商品
         addNewProduct() {
-            console.log("ADD!");
+            // 新增無法被填寫的 id 
+            // -- 想法：抓出 this.productsData 中的最後一筆物件資料的 id 屬性值，加一後即為新資料的 id 屬性值 --
+
+            // Object.keys() 方法會回傳一個由給定物件的所有可列舉自身屬性的屬性名組成的陣列
+            // 參考：https://www.itread01.com/content/1549953212.html
+            let productsDataKeys = Object.keys(this.productsData);
+            // 找到回傳陣列中最後一筆資料的 id 屬性的值，並賦予到變數 newId
+            let newId = (productsDataKeys.length-1);
+            // newId+1 後賦予到 this.temporarilyData.id
+            newId = (this.productsData[newId].id)+1;
+            this.temporarilyData.id = newId;
+
             this.productsData.push(this.temporarilyData);
-            console.log(this.productsData)
+            this.temporarilyData = {};
+            console.log("新增完成～後清空資料",this.temporarilyData);
         },
+        // 刪除商品
+        deleteProduct(id) {
+            console.log("Woona Delete!", id);
+            this.productsData.forEach((item, index)=>{
+                if(item.id == id) {
+                   this.productsData.splice(id, 1);
+                }
+            })
+        }
     }
 });
 

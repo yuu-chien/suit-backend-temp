@@ -89,7 +89,7 @@
                     <td>{{ product.enabled ? "上架中": "下架中" }}</td>
                     <td>
                         <span class="material-icons mr-2 _c_icon-edit">edit</span>
-                        <span class="material-icons _c_icon-del">delete</span>
+                        <span class="material-icons _c_icon-del" @click="deleteProduct(product.id)">delete</span>
                     </td>
                   </tr>
                 </tbody>
