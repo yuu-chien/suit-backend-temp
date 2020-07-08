@@ -14,3 +14,13 @@ body {
 ._c_icon-edit, ._c_icon-del {
     cursor: pointer;
 }
+
+.btn-outline-info:focus, .btn-outline-info.focus {
+    box-shadow: none !important;
+}
+// .btn-primary {
+//     border: none !important;
+// }
+.btn-primary:focus, .btn-primary.focus {
+    box-shadow: none !important;
+}
