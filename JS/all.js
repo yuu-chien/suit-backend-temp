@@ -32,8 +32,8 @@ var app = new Vue({
     methods: {
         addNewProduct() {
             console.log("ADD!");
-            // this.productsData.push(this.temporarilyData);
-            // console.log(this.productsData)
+            this.productsData.push(this.temporarilyData);
+            console.log(this.productsData)
         },
     }
 });
