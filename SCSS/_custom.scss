@@ -1,10 +1,22 @@
-// *{
-//     outline: 1px solid olivedrab;
-// }
+*{
+    outline: 1px solid olivedrab;
+}
 
 body {
     height: 100vh;
     background: #efefef;
+}
+
+._c_navbar {
+    height: 100vh;
+    background: #414144;
+    a {
+        color: #efefef;
+        text-decoration: none;
+    }
+}
+._c_function-item {
+    margin-bottom: 16px;
 }
 
 ._c_add-modal{
@@ -18,9 +30,7 @@ body {
 .btn-outline-info:focus, .btn-outline-info.focus {
     box-shadow: none !important;
 }
-// .btn-primary {
-//     border: none !important;
-// }
+
 .btn-primary:focus, .btn-primary.focus {
     box-shadow: none !important;
 }
