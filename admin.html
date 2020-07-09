@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="./CSS/admin.all.min.css">
+    <link rel="shortcut icon" href="./img/tuxedo.ico">
+    <title>HOT GUY Backend</title>
 </head>
 <body>
   <div id="app" class="container-fluid">
@@ -122,7 +123,7 @@
               <!-- - 新增商品分類 - -->
               <div class="form-group">
                 <label for="category">商品分類</label>
-                <select class="form-control" v-model="temporarilyData.category">
+                <select class="form-control" id="category" v-model="temporarilyData.category">
                   <option value="西裝襯衫">西裝襯衫</option>
                   <option value="西裝外套">西裝外套</option>
                   <option value="西裝長褲">西裝長褲</option>
@@ -132,10 +133,10 @@
               </div>
               <!-- - 新增商品狀態 - -->
               <div class="form-group">
-                <label for="">商品狀態</label>
-                <select class="form-control">
-                  <option value=true>上架中</option>
-                  <option value=false>下架中</option>
+                <label for="enabledState">商品狀態</label>
+                <select class="form-control" id="enabledState" v-model="temporarilyData.enabled">
+                  <option :value=true>上架中</option>
+                  <option :value=false>下架中</option>
                 </select>
               </div>
               <!-- - 新增商品單位 - -->
@@ -152,6 +153,7 @@
               <div class="form-group">
                 <label for="price">售價</label>
                 <input type="number" class="form-control" id="price" v-model="temporarilyData.price">
+                <!-- <small id="priceHelp" class="_c_priceHelp">商品售價不可以高於商品原價</small> -->
               </div>
               <!-- - 新增商品短述 - -->
               <div class="form-group">
@@ -208,7 +210,7 @@
               <!-- - 修改商品分類 - -->
               <div class="form-group">
                 <label for="edit-category">商品分類</label>
-                <select class="form-control" v-model="temporarilyData.category">
+                <select class="form-control" id="edit-category"  v-model="temporarilyData.category">
                   <option value="西裝襯衫">西裝襯衫</option>
                   <option value="西裝外套">西裝外套</option>
                   <option value="西裝長褲">西裝長褲</option>
@@ -218,10 +220,10 @@
               </div>
               <!-- - 修改商品狀態 - -->
               <div class="form-group">
-                <label for="">商品狀態</label>
-                <select class="form-control">
-                  <option value=true>上架中</option>
-                  <option value=false>下架中</option>
+                <label for="edit-enabledState">商品狀態</label>
+                <select class="form-control" id="edit-enabledState" v-model="temporarilyData.enabled">
+                  <option :value=true>上架中</option>
+                  <option :value=false>下架中</option>
                 </select>
               </div>
               <!-- - 修改商品單位 - -->

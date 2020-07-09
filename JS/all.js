@@ -69,7 +69,7 @@ var app = new Vue({
                 if(item.id == id) {
                     console.log("hi", id);
                     this.temporarilyData = item;
-                    console.log("hi temporarilyData", this.temporarilyData);
+                    // console.log("hi temporarilyData", this.temporarilyData);
                 }
             })
         },
