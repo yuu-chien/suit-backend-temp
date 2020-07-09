@@ -72,6 +72,10 @@ var app = new Vue({
                     console.log("hi temporarilyData", this.temporarilyData);
                 }
             })
+        },
+        // 關閉編輯商品的 Model
+        closeEditProduct() {
+            $('#editProductModal').modal('hide');
         }
     }
 });
