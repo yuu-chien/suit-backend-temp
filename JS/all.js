@@ -51,13 +51,14 @@ var app = new Vue({
             this.productsData.push(this.temporarilyData);
             this.temporarilyData = {};
             console.log("新增完成～後清空資料",this.temporarilyData);
+            $('#addProductModal').modal('hide');
         },
         // 刪除商品
         deleteProduct(id) {
             console.log("Woona Delete!", id);
             this.productsData.forEach((item, index)=>{
                 if(item.id == id) {
-                   this.productsData.splice(id, 1);
+                   this.productsData.splice(index, 1);
                 }
             })
         },
