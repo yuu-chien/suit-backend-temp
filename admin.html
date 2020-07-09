@@ -55,10 +55,9 @@
       <main class="col-10 pt-5">
         <section class="mb-4">
           <div class="container d-flex justify-content-end">
-            <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#addProductModal">新增商品</button>
+            <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#addProductModal" @click="openAddNewProduct">新增商品</button>
           </div>
         </section>
-
         <section>
           <div class="container">
               <table class="table table-hover bg-light">
@@ -83,7 +82,7 @@
                     <!-- 使用三原運算子判斷 boolean -->
                     <td>{{ product.enabled ? "上架中": "下架中" }}</td>
                     <td>
-                        <span class="material-icons mr-2 _c_icon-edit">edit</span>
+                        <span class="material-icons mr-2 _c_icon-edit" data-toggle="modal" data-target="#editProductModal" @click="editProduct(product.id)">edit</span>
                         <span class="material-icons _c_icon-del" @click="deleteProduct(product.id)">delete</span>
                     </td>
                   </tr>
@@ -91,17 +90,16 @@
               </table>
           </div>
         </section>
-
       </main>
     </div> 
     <!-- row 結束 -->
   
     <!-- ------ 新增商品 Modal ------ -->
     <div class="modal " id="addProductModal" tabindex="-1" role="dialog" aria-labelledby="addProductModalLabel" aria-hidden="true">
-      <div class="modal-dialog  _c_add-modal">
+      <div class="modal-dialog  _c_modal">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="addProductModalLabel">新增產品</h5>
+            <h5 class="modal-title" id="addProductModalLabel">新增商品</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span class="material-icons">close</span>
             </button>
@@ -144,28 +142,28 @@
                 <label for="unit">單位</label>
                 <input type="text" class="form-control" id="unit" aria-describedby="unitHelp" v-model="temporarilyData.unit">
               </div>
+              <!-- - 新增商品原價 - -->
+              <div class="form-group">
+                <label for="origin_price">原價</label>
+                <input type="number" class="form-control" id="origin_price" v-model="temporarilyData.origin_price">
+              </div>
+              <!-- - 新增商品售價 - -->
+              <div class="form-group">
+                <label for="price">售價</label>
+                <input type="number" class="form-control" id="price" v-model="temporarilyData.price">
+              </div>
+              <!-- - 新增商品短述 - -->
+              <div class="form-group">
+                <label for="content">商品短述</label>
+                <input type="text" class="form-control" id="content" aria-describedby="contentHelp" v-model="temporarilyData.content">
+              </div>
             </div>
             <!-- - 商品圖片預覽 - -->
             <div class="col-6 form-group">
               <p>商品預覽<p>
-              <div>
+              <div class="_c_product-preview">
                 <img :src="temporarilyData.imageUrl" alt="">
               </div>
-            </div>
-            <!-- - 新增商品原價 - -->
-            <div class="col-6 form-group">
-              <label for="origin_price">原價</label>
-              <input type="number" class="form-control" id="origin_price" v-model="temporarilyData.origin_price">
-            </div>
-            <!-- - 新增商品售價 - -->
-            <div class="col-6 form-group">
-              <label for="price">售價</label>
-              <input type="number" class="form-control" id="price" v-model="temporarilyData.price">
-            </div>
-            <!-- - 新增商品短述 - -->
-            <div class="col-12 form-group">
-              <label for="content">商品短述</label>
-              <input type="text" class="form-control" id="content" aria-describedby="contentHelp" v-model="temporarilyData.content">
             </div>
             <!-- - 新增商品詳述 - -->
             <div class="col-12 form-group">
@@ -176,7 +174,94 @@
           <!-- 儲存或關閉 -->
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
-            <button type="button" class="btn btn-primary" @click="addNewProduct">新增</button>
+            <button type="button" class="btn btn-primary" @click="addNewProduct">確認</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ------ 修改商品 Modal ------ -->
+    <div class="modal " id="editProductModal" tabindex="-1" role="dialog" aria-labelledby="editProductModalLabel" aria-hidden="true">
+      <div class="modal-dialog  _c_modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="editProductModalLabel">編輯產品</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span class="material-icons">close</span>
+            </button>
+          </div>
+          <!-- 修改填寫的產品內容 -->
+          <div class="row modal-body">
+            <!-- - 修改商品名稱 - -->
+            <div class="col-12 form-group">
+              <label for="edit-title">商品名稱</label>
+              <input type="text" class="form-control" id="edit-title" aria-describedby="edit-titleHelp" v-model="temporarilyData.title">
+            </div>
+            <!-- - 修改中間內容左邊 - -->
+            <div class="col-6">
+              <!-- - 修改商品圖片 - -->
+              <div class="form-group">
+                <label for="edit-imageUrl">商品圖片網址</label>
+                <input type="text" class="form-control" id="edit-imageUrl" aria-describedby="edit-imageUrlHelp" v-model="temporarilyData.imageUrl">
+              </div>
+              <!-- - 修改商品分類 - -->
+              <div class="form-group">
+                <label for="edit-category">商品分類</label>
+                <select class="form-control" v-model="temporarilyData.category">
+                  <option value="西裝襯衫">西裝襯衫</option>
+                  <option value="西裝外套">西裝外套</option>
+                  <option value="西裝長褲">西裝長褲</option>
+                  <option value="領帶">領帶</option>
+                  <option value="口袋巾">口袋巾</option>
+                </select>
+              </div>
+              <!-- - 修改商品狀態 - -->
+              <div class="form-group">
+                <label for="">商品狀態</label>
+                <select class="form-control">
+                  <option value=true>上架中</option>
+                  <option value=false>下架中</option>
+                </select>
+              </div>
+              <!-- - 修改商品單位 - -->
+              <div class="form-group">
+                <label for="edit-unit">單位</label>
+                <input type="text" class="form-control" id="edit-unit" aria-describedby="edit-unitHelp" v-model="temporarilyData.unit">
+              </div>
+              <!-- - 修改商品原價 - -->
+              <div class="form-group">
+                <label for="edit-origin_price">原價</label>
+                <input type="number" class="form-control" id="edit-origin_price" v-model="temporarilyData.origin_price">
+              </div>
+              <!-- - 修改商品售價 - -->
+              <div class="form-group">
+                <label for="edit-price">售價</label>
+                <input type="number" class="form-control" id="edit-price" v-model="temporarilyData.price">
+              </div>
+              <!-- - 修改商品短述 - -->
+              <div class="form-group">
+                <label for="edit-content">商品短述</label>
+                <input type="text" class="form-control" id="edit-content" aria-describedby="edit-contentHelp" v-model="temporarilyData.content">
+              </div>
+            </div>
+            <!-- - 修改圖片預覽 - -->
+            <div class="col-6 form-group">
+              <p>商品預覽<p>
+              <div class="_c_product-preview">
+                <img :src="temporarilyData.imageUrl" alt="">
+              </div>
+            </div>
+
+            <!-- - 修改商品詳述 - -->
+            <div class="col-12 form-group">
+              <label for="edit-description">商品詳述</label>
+              <textarea class="form-control" id="edit-description" rows="3" v-model="temporarilyData.description"></textarea>
+            </div>
+          </div>
+          <!-- 儲存或關閉 -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+            <button type="button" class="btn btn-primary" @click="">儲存</button>
           </div>
         </div>
       </div>

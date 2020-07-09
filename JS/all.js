@@ -6,7 +6,7 @@ var app = new Vue({
             {
                 id: 1,
                 title: "修身彈力棉質襯衫",
-                category: "襯衫",
+                category: "西裝襯衫",
                 content:"由棉質混紡布料裁製，融合修身剪裁，重釋雋永格調。",
                 description: "這款長袖襯衫由棉質混紡布料裁製，帶有舒適的彈性，包含隱形紐扣門襟、精緻的袖扣細節，弧形下擺融合修身剪裁，重釋雋永格調。",
                 imageUrl: "https://github.com/yuu-chien/hex-JSLC-w3/blob/master/img/%E4%BF%AE%E8%BA%AB%E6%A3%89%E8%B3%AA%E6%B7%B7%E7%B4%A1%E8%A5%AF%E8%A1%AB.jpg?raw=true",
@@ -30,6 +30,10 @@ var app = new Vue({
         ]
     },
     methods: {
+        // 打開新增商品的 Model
+        openAddNewProduct() {
+            this.temporarilyData = {};
+        },
         // 新增商品
         addNewProduct() {
             // 新增無法被填寫的 id 
@@ -54,6 +58,17 @@ var app = new Vue({
             this.productsData.forEach((item, index)=>{
                 if(item.id == id) {
                    this.productsData.splice(id, 1);
+                }
+            })
+        },
+        // 編輯商品
+        editProduct(id) {
+            console.log("Woona Edit!", id);
+            this.productsData.forEach((item, index)=>{
+                if(item.id == id) {
+                    console.log("hi", id);
+                    this.temporarilyData = item;
+                    console.log("hi temporarilyData", this.temporarilyData);
                 }
             })
         }
