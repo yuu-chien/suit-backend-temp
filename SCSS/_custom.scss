@@ -1,6 +1,6 @@
-*{
-    outline: 1px solid olivedrab;
-}
+// *{
+//     outline: 1px solid olivedrab;
+// }
 
 body {
     height: 100vh;
@@ -23,9 +23,14 @@ body {
 }
 ._c_function-item {
     margin-bottom: 16px;
+    font-size: 20px;
 }
 ._c_modal{
     max-width: 55vw;
+    .modal-title {
+        font-weight: bold;
+        color: #56adad;
+    }
 }
 ._c_icon-edit {
     cursor: pointer;
