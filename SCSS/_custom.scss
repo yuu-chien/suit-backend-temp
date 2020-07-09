@@ -1,6 +1,6 @@
-*{
-    outline: 1px solid olivedrab;
-}
+// *{
+//     outline: 1px solid olivedrab;
+// }
 
 body {
     height: 100vh;
@@ -18,15 +18,25 @@ body {
 ._c_function-item {
     margin-bottom: 16px;
 }
-
-._c_add-modal{
+._c_modal{
     max-width: 55vw;
 }
-
 ._c_icon-edit, ._c_icon-del {
     cursor: pointer;
 }
+._c_product-preview {
+    width: 100%;
+    height: 545px;
+    overflow: hidden;
+    img {
+        width: 100%;
+        object-fit: cover;
+    }
+}
 
+
+
+// ----- BS4 強制修改 -----
 .btn-outline-info:focus, .btn-outline-info.focus {
     box-shadow: none !important;
 }
