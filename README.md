@@ -23,8 +23,15 @@
 
 <br>
 
-## 助教 feedback
-
+## 實作內容 
+* 使用 Vue.js 搭配 Bootstrap
+* 依照產品之獨特 id 進行編輯或刪除
 <!-- 圖片來源網站 -->
 <!-- https://www.cosstores.com/en/men.html -->
 <!-- https://www.tomford.com/ -->
+
+<br>
+
+## 助教 feedback
+
+
