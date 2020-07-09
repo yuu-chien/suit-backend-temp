@@ -27,8 +27,17 @@ body {
 ._c_modal{
     max-width: 55vw;
 }
-._c_icon-edit, ._c_icon-del {
+._c_icon-edit {
     cursor: pointer;
+    &:hover {
+        color: #56adad;
+    }
+}
+._c_icon-del {
+    cursor: pointer;
+    &:hover {
+        color: #da3d3d;
+    }
 }
 ._c_product-preview {
     width: 100%;
@@ -36,6 +45,7 @@ body {
     overflow: hidden;
     img {
         width: 100%;
+        height: 100%;
         object-fit: cover;
     }
 }
